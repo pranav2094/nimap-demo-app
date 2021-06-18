@@ -1,0 +1,45 @@
+nav {
+    padding: .5rem 0;
+  }
+  
+  
+  .navbar-toggler {
+    background: deepskyblue;
+  }
+  
+  .nav-item a {
+    color: #fff;
+  }
+  
+  .menu-items {
+    margin-left: auto;
+    margin-right: 0;
+  }
+  
+  /* Main nav - starts */
+  
+  .main-nav li {
+    display: inline-block;
+    margin-left: 35px;
+  }
+  
+  .main-nav li a:link,
+  .main-nav li a:visited {
+    padding: 8px 0;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 90%;
+    border-top: 4px solid transparent;
+    -webkit-transition: border-top 0.2s;
+    transition: border-top 0.2s;
+  }
+  
+  .main-nav li a:hover {
+    border-top: 4px solid #4acaff;
+  }
+  
+  .active-link {
+    border-top: 4px solid #4acaff !important;
+  }
+  

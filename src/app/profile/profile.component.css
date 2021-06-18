@@ -1,0 +1,25 @@
+.header-wrapper {
+    background: #2a93bd;
+  }
+  
+  .profile-wrapper {
+    color: #000;
+  }
+  
+  .profile-desc {
+    font-size: 1em;
+  }
+  
+  .profile-wrapper h3 {
+    color: deepskyblue;
+  }
+  
+  input[type="file"] {
+    display: none;
+  }
+  
+  .avatar-img {
+    height: 225px;
+    width: 225px;
+  }
+  

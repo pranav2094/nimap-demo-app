@@ -1,0 +1,332 @@
+<section class="header-wrapper">
+  <div class="container w-100 h-100 pt-5">
+    <div class="row">
+      <div class="col">
+        <app-navigation-bar></app-navigation-bar>
+      </div>
+    </div>
+
+    <div class="row search-box align-items-center h-100" style="margin-top: -7%">
+      <div class="col">
+
+        <div class="row ">
+          <div class="col">
+            <h1 class="mb-20">I'm looking for...</h1>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-10">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" aria-describedby="search"
+                    placeholder="Enter a Job Description">
+                </div>
+              </div>
+            </div>
+            <div class="row mb-20">
+              <div class="col-md-6 pt-2">
+                <div class="row cb-wrapper">
+                  <div class="col-md-4 mb-1">
+                    <label class="checkbox-label">
+                      <input type="checkbox" id="fulltime" name="fulltime">
+                      <span class="checkmark"></span> Full Time</label>
+                  </div>
+                  <div class="col-md-8 mb-1">
+                    <label class="checkbox-label">
+                      <input type="checkbox" id="fulltime" name="fulltime">
+                      <span class="checkmark"></span> Part Time / Casual / Part Time</label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <select name="" id="" class="form-control">
+                  <option selected>Select your Location</option>
+                  <option value="1">Mumbai</option>
+                  <option value="2">Pune</option>
+                  <option value="3">Nashik</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 col-sm-12">
+            <div class="search-btn-wrapper mb-20 ">
+              <button type="submit" class="btn btn-info">
+                <i class="fa fa-search" aria-hidden="true"></i> Search</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 pt-5 ">
+          <div class="mx-auto text-center">
+            <button class="btn btn-info" (click)="openUserForm()">Register</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="intro">
+  <div class="container">
+    <div class="row">
+      <div class="col py-4">
+        <div class="row pt-4">
+          <div class="col title-wrapper pt-4">
+            <h2 class="mb-10">We're leaders in</h2>
+            <h1>Creative Digital Recruitment</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col  desc-wrapper ">
+            <p class="text-center mb-20">
+              Based in Surry Hills, the creative hub of Sydney we are surrounded by creativity and that reflects on the type of jobs we
+              recruit for.
+            </p>
+            <div class="row mb-4">
+              <div class="col-md-4 mx-auto text-center">
+                <button class="btn btn-outline-info">Find out more about us</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<div class="form-modal modal popforms" id="userRegistrationModal">
+  <div class="form-modal-body mt-2">
+    <div class="container col-md-7">
+      <div class="row">
+        <div class="col-md-12 mx-auto">
+          <div class="card ">
+            <div class="card-header">
+              <div class="row">
+                <div class="col-md-3 col-xs-3 col-sm-3">
+                  <h3 class="mb-0 my-2">Register </h3>
+                </div>
+                <div class="col-md-9 col-xs-9 col-sm-9 text-right" (click)="closeUserForm();">
+                  <span class="text-right">
+                    <i class="fa fa-close"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 mx-auto">
+          <div class="card ">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form" autocomplete="off" nonvalidate>
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="card-body text-center">
+                    <img class="img-fluid" [src]="image" alt="{{image}}" title="{{image}}" >
+                  </div>
+                    <label class="sizeError" *ngIf="isNotValidImage">Maximum file size exceeded </label>
+                
+                  <div class="card-body text-center mt-2">
+                    <input type="hidden" id="image" name="image" formControlName="image" class="form-control " required>
+                    <label id="file" class="mx-auto"> Upload your photo
+                      <input type="file" class="form-control" accept="image/*" (change)="onFileSelect($event)"
+                        size="60">
+                    </label>
+                  
+                
+                  </div>
+                </div>
+                <div class="col-md-9">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-6 mb-1">
+                        <div class="form-group">
+                          <input type="text" class="form-control" id="firstName" name="firstName"
+                            formControlName="firstName" maxlength="20" pattern="[A-Za-z]{1,20}" placeholder="First Name" 
+                             title="Alphabe should not be more than 20 characters" required>
+                             <div class=""
+                                *ngIf="registerFormControl.firstName.errors && submitted">
+                                <span class="error" *ngIf="(registerFormControl.firstName.touched || submitted) && registerFormControl.firstName.errors?.required">First name required</span>
+                                <span class="error" *ngIf="(registerFormControl.firstName.touched || submitted) && registerFormControl.firstName.errors?.pattern">Enter valid first name</span>
+                            </div>
+
+                            <!-- <div [ngClass]="{'error': registerFormControl.firstName.errors?.required && submitted && registerFormControl.firstName.errors,
+                            'hideErrors': !((submitted && registerFormControl.firstName.errors))}">
+                              Please Enter Full Name
+                            </div> -->
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <input type="text" class="form-control" id="lastName" name="lastName"
+                            formControlName="lastName" placeholder="Last Name" >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <input type="email" class="form-control" id="email" name="email"
+                            formControlName="email"
+                            placeholder="Email" >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <input type="text" maxlength="10" minlength="10" class="form-control" id="number" name="number"
+                            formControlName="mobile" placeholder="Number">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="row">
+                          <div class="col-md-2">
+                            <span> Age:</span>
+                          </div>
+                          <div class="col-md-10">
+                            <div class="form-group">
+                              <input type="hidden" id="age" name="age" formControlName="age">
+                              <input type="range" class="form-control slider" placeholder="Age"
+                                (change)="selectAge($event)" min="20" max="60">
+                              <p>Selected Value : {{age}}
+                                <span id="demo"></span>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <select class="form-control" id="state" name="state" formControlName="state">
+                            <option value="" disabled selected>Select your state</option>
+                            <option *ngFor="let state of states;" [ngValue]="state.key">
+                              {{state.value}}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <select class="form-control" id="country" name="country" formControlName="country" >
+                            <option value="" disabled selected>Select your Country</option>
+                            <option *ngFor="let country of countries" [ngValue]="country.key">
+                              {{country.value}}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <select class="form-control" id="address" name="address" (change)="addressChange($event)" placeholder="Select your address" formControlName="address">
+                            <option value="" disabled selected>Select your address type</option>
+                            <option *ngFor="let addr of addrType" value={{addr.id}}>
+                              {{addr.name}}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="home-addr" *ngIf="address === 'Home'">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <input type="text" class="form-control" id="addr1" name="addr1" formControlName="addr1"
+                              placeholder="Address 1" >
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <input type="text" class="form-control" id="addr2" name="addr2" formControlName="addr2"
+                              placeholder="Address 2" >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="company-addr" *ngIf="address === 'Company'">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <input type="text" class="form-control" id="addr1" name="addr1" formControlName="addr1"
+                              placeholder="Company Address 1" >
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <input type="text" class="form-control" id="addr2" name="addr2" formControlName="addr2"
+                              placeholder="Company Address 2" >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="" (click)="focusTagInput()">
+                         
+                                <input
+                                placeholder="tags"
+                                #tagInput type="text"
+                                class="form-control"
+                                (keyup)="onKeyUp($event)"
+                                formControlName="tag">
+                              </div>
+                              <span class="tag-item" *ngFor="let tag of items">
+                                {{tag}}
+                                <span class="remove-tag" (click)="removeTag(tag)">×</span>
+                              </span>
+                              </div>
+                            
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="checkbox-label">
+                            <input type="checkbox" id="newsLetter" name="newsLetter" formControlName="newsLetter"
+                              [checked]="newsLetter" (change)="newsLetter = !newsLetter">
+                            <span class="checkmark"></span> Subscribe to our News Letter</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6 text-right">
+                        <div class="form-group">
+                          <a class="btn btn-light mb-2" (click)="closeUserForm();">Cancel</a>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <!-- [disabled]="!registerForm.valid" -->
+                          <button type="submit" class="btn btn-info mb-2"
+                            >Submit</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <hr>
+    </div>
+  </div>
+</div>
