@@ -4,9 +4,8 @@ import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 
 
-const routes: Routes = [{ path: 'home', component: HomeComponent, pathMatch: 'full'},
+const routes: Routes = [{ path: '', component: HomeComponent, pathMatch: 'full'},
 { path: 'profile', component: ProfileComponent },
-// { path: 'payment', component: PaymentComponent,canActivate: [AuthGuard]},
 { path: '**', redirectTo: '/' }];
 
 @NgModule({

@@ -108,10 +108,10 @@
           <div class="card ">
             <div class="card-header">
               <div class="row">
-                <div class="col-md-3 col-xs-3 col-sm-3">
-                  <h3 class="mb-0 my-2">Register </h3>
+                <div class="col-md-4 col-xs-4 col-sm-4">
+                  <h3 class="mb-0 my-2">{{formTitle}} </h3>
                 </div>
-                <div class="col-md-9 col-xs-9 col-sm-9 text-right" (click)="closeUserForm();">
+                <div class="col-md-8 col-xs-8 col-sm-8 text-right" (click)="closeUserForm();">
                   <span class="text-right">
                     <i class="fa fa-close"></i>
                   </span>
@@ -124,7 +124,7 @@
       <div class="row">
         <div class="col-md-12 mx-auto">
           <div class="card ">
-            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form" autocomplete="off" nonvalidate>
+            <form [formGroup]="registerForm" class="form" autocomplete="off" nonvalidate>
               <div class="row">
                 <div class="col-md-3">
                   <div class="card-body text-center">
@@ -133,10 +133,10 @@
                     <label class="sizeError" *ngIf="isNotValidImage">Maximum file size exceeded </label>
                 
                   <div class="card-body text-center mt-2">
-                    <input type="hidden" id="image" name="image" formControlName="image" class="form-control " required>
+                    <input type="hidden" id="image" name="image" formControlName="image" class="form-control ">
                     <label id="file" class="mx-auto"> Upload your photo
-                      <input type="file" class="form-control" accept="image/*" (change)="onFileSelect($event)"
-                        size="60">
+                      <input type="file" class="form-control" accept="image/*" (change)="showPreviewImage($event)"
+                        size="60">address
                     </label>
                   
                 
@@ -314,8 +314,13 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <!-- [disabled]="!registerForm.valid" -->
-                          <button type="submit" class="btn btn-info mb-2"
-                            >Submit</button>
+                        
+                          <button type="button" class="btn btn-info mb-2" (click)="registerUser()" *ngIf="!isFromProfile">
+                            Submit
+                          </button>
+                          <button type="button" class="btn btn-info mb-2" (click)="updateUser()" *ngIf="isFromProfile">
+                            Update
+                          </button>
                         </div>
                       </div>
                     </div>

@@ -22,6 +22,34 @@
 </head>
 <body class="mat-typography">
   <app-root></app-root>
+  <script>
+    try {
+      var logger = function () {
+        var oldConsoleLog = null;
+        var pub = {};
+ 
+        pub.enableLogger = function enableLogger() {
+          if (oldConsoleLog == null)
+            return;
+ 
+          window['console']['log'] = oldConsoleLog;
+        };
+ 
+        pub.disableLogger = function disableLogger() {
+          oldConsoleLog = console.log;
+          window['console']['log'] = function () { };
+        };
+ 
+        return pub;
+      }();
+      if(isUAT != "true")
+      logger.disableLogger();
+    } catch (e) {
+ 
+    }
+
+  
+</script>
 </body>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>

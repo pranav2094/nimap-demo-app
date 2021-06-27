@@ -27,6 +27,8 @@
             <div class="col-md-5 col-sm-5">
               <div class="card-body text-center">
                 <img class="img-fluid avatar-img" *ngIf="userDetails.image" [src]="userDetails.image" alt="{{userDetails.image}}" title="{{userDetails.image}}">
+                <label class="sizeError" *ngIf="isNotValidImage">Maximum file size exceeded </label>
+
               </div>
               <div class="card-body text-center">
                 <div class="row">

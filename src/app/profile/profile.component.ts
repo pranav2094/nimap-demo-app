@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CommonService } from 'src/services/common.service';
 import { UtilityserviceService } from 'src/services/utilityservice.service';
 
 @Component({
@@ -10,13 +11,19 @@ import { UtilityserviceService } from 'src/services/utilityservice.service';
 export class ProfileComponent implements OnInit {
   userDetails:any;
   isNotValidImage:boolean=false;
-  constructor(private utility: UtilityserviceService,public _router: Router) { }
+  constructor(private utility: UtilityserviceService,public _router: Router, private commonService: CommonService) { }
 
   ngOnInit() {
-    if(!this.utility.isUndefinedOrNull(this.utility.getLS("userDetails"))){
-      this.userDetails = JSON.parse(this.utility.getLS("userDetails"));
-    }
+    // if(!this.utility.isUndefinedOrNull(this.utility.getLS("userDetails"))){
+    //   this.userDetails = JSON.parse(this.utility.getLS("userDetails"));
+    // }
+    this.getCurrentUser();
+  }
 
+  getCurrentUser(){
+    this.commonService.getCurrentUser().subscribe((res:any)=>{
+      this.userDetails = res[0];
+    })
   }
   
 
@@ -35,6 +42,7 @@ export class ProfileComponent implements OnInit {
             if(width > 310 && height > 325){
               this.isNotValidImage = true;
               alert("Maximum file size exceeded");
+              return;
             }else{
               this.isNotValidImage = false;
 

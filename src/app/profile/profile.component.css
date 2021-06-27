@@ -22,4 +22,9 @@
     height: 225px;
     width: 225px;
   }
-  
+  .sizeError {
+    color: red !important;
+    position: absolute !important;
+    font: 300 12px "Muli", sans-serif !important;
+    margin: 0px 0px 3px 20px;
+  }
