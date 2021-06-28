@@ -128,14 +128,14 @@
               <div class="row">
                 <div class="col-md-3">
                   <div class="card-body text-center">
-                    <img class="img-fluid" [src]="image" alt="{{image}}" title="{{image}}" >
+                    <img class="img-fluid" [src]="image" alt="{{image1}}" title="{{image}}" >
                   </div>
                     <label class="sizeError" *ngIf="isNotValidImage">Maximum file size exceeded </label>
                 
                   <div class="card-body text-center mt-2">
                     <input type="hidden" id="image" name="image" formControlName="image" class="form-control ">
                     <label id="file" class="mx-auto"> Upload your photo
-                      <input type="file" class="form-control" accept="image/*" (change)="showPreviewImage($event)"
+                      <input type="file" class="form-control" accept="image/*" (change)="onFileSelect($event)"
                         size="60">address
                     </label>
                   

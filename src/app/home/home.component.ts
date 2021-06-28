@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit {
   registerForm: FormGroup;
   userDetails:any;
   newsLetter: boolean = false;
+  image1: any = '../../assets/images/avatar.png';
   image: any = '../../assets/images/avatar.png';
   age = 30;
   profileData: any;
@@ -127,6 +128,9 @@ export class HomeComponent implements OnInit {
       return;
     } 
     else{
+      this.registerForm.value.age = this.age;
+      this.registerForm.value.tag = this.items;
+      this.registerForm.value.image = this.image;
       this.commonService.updateUser(this.userDetails.id,this.registerForm.value).subscribe(()=>{
         this.getCurrentUser();
 
@@ -179,7 +183,7 @@ export class HomeComponent implements OnInit {
       address: [this.address],
       addr1: [this.addr1],
       addr2: [this.addr2],
-      tag: [this.items],
+      tag: [],
       newsLetter: [this.newsLetter]
     });
   }
@@ -226,15 +230,7 @@ export class HomeComponent implements OnInit {
     }
   }
   
-  showPreviewImage(event: any) {
-    if (event.target.files && event.target.files[0]) {
-        var reader = new FileReader();
-        reader.onload = (event: any) => {
-            this.image = event.target.result;
-        }
-        reader.readAsDataURL(event.target.files[0]);
-    }
-}
+
 
 
   selectAge(e: any) {
