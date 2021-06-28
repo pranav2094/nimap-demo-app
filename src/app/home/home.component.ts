@@ -71,9 +71,10 @@ export class HomeComponent implements OnInit {
       tag: [],
       newsLetter: []
     });
-    this.getCurrentUser();
   
     if(this.utility.getLS("fromProfile")=="1"){
+      this.getCurrentUser();
+
       this.isFromProfile = true
       this.formTitle ="Update Profile";
       $('#userRegistrationModal').css({ "display": "block", "background": "rgba(0, 0, 0, 0.6)" });
